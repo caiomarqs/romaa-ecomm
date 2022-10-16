@@ -1,0 +1,1 @@
+export * as ProductQueries from './get-product'

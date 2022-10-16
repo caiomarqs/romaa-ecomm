@@ -1,3 +1,7 @@
+html {
+    cursor: url(../public/auto-cursor.cur), auto;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
