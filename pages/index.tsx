@@ -2,15 +2,15 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useEffect } from 'react'
 
-import { ColletionShopifyService, ProductShopifyService } from '../lib/shopify'
+import { ColletionShopifyService, FixedOffersShopifyService, ProductShopifyService } from '../lib/shopify'
 import { Nav } from '../src/components'
 import { CartProvider } from '../src/context'
 import { HomePage } from '../src/pages'
 
-const Home: NextPage = ({ products, collectionsMenu }: any) => {
+const Home: NextPage = ({ products, collectionsMenu, fixedOffers }: any) => {
 
   useEffect(() => {
-    console.log(collectionsMenu)
+    console.log(fixedOffers)
   }, [])
 
   return (
@@ -32,7 +32,10 @@ const Home: NextPage = ({ products, collectionsMenu }: any) => {
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
       </Head>
       <CartProvider>
-        <Nav collectionsMenu={collectionsMenu} />
+        <Nav
+          collectionsMenu={collectionsMenu}
+          fixedOffers={fixedOffers}
+        />
         <HomePage products={products} />
       </CartProvider>
     </>
@@ -42,11 +45,13 @@ const Home: NextPage = ({ products, collectionsMenu }: any) => {
 export async function getStaticProps() {
   const products = await ProductShopifyService.getProductsInCollection("frontpage")
   const collectionsMenu = await ColletionShopifyService.getAllCollectionsMenu()
+  const fixedOffers = await FixedOffersShopifyService.getFixedOffers()
 
   return {
     props: {
       products,
-      collectionsMenu
+      collectionsMenu,
+      fixedOffers
     }
   }
 }

@@ -32,7 +32,8 @@ const getAllCollectionsMenu = async () => {
             .filter((collection: any) => (
                 collection
                     .description
-                    .match(/collection-menu$/gmi)?.length > 0
+                    .match(RegExp(`${collectionMenuTag}$`, 'gmi'))
+                    ?.length > 0
             ))
             .sort(sortCollectionsMenu)
 

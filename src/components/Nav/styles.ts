@@ -1,9 +1,13 @@
 import { TailWindClassType } from "../../theme/types"
 
-const navContatiner: TailWindClassType = [
-    'border-b sticky',
+const navHeader: TailWindClassType = [
+    'sticky',
     'top-0',
     'z-20',
+]
+
+const navContainer: TailWindClassType = [
+    'border-b',
     'bg-[#ffffff60]',
     'backdrop-blur-xl'
 ]
@@ -34,4 +38,27 @@ const collectionMenuLink: TailWindClassType = [
     'pb-2'
 ]
 
-export { navContatiner, navContent, collectionsMenu, collectionMenuLink }
+const fixedOffersContainer: TailWindClassType = [
+    'bg-red',
+    'absolute',
+    'w-100'
+]
+
+const fixedOffersTitles: TailWindClassType = [
+    'flex',
+    'mx-auto',
+    'lg:max-w-screen-sm',
+    'py-2',
+    'flex-col'
+]
+
+
+export {
+    navContainer,
+    navContent,
+    navHeader,
+    collectionsMenu,
+    collectionMenuLink,
+    fixedOffersContainer,
+    fixedOffersTitles
+}

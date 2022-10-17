@@ -5,19 +5,22 @@ import { Transition } from "@headlessui/react"
 import { CartActions } from "../../actions/CartActions/actions"
 import { CartContext } from "../../context"
 import { renderClassNames } from "../../theme"
-import { CollectionMenu } from "./ColletionMenu"
 
+import { CollectionMenu } from "./ColletionMenu"
+import { FixedOffers } from "./FixedOffers"
 import { NavLogo } from "./NavLogo"
 import {
-    navContatiner,
-    navContent
+    navContainer,
+    navContent,
+    navHeader
 } from "./styles"
 
 type NavProps = {
-    collectionsMenu: any
+    collectionsMenu: any,
+    fixedOffers: any
 }
 
-const Nav = ({ collectionsMenu }: NavProps) => {
+const Nav = ({ collectionsMenu, fixedOffers }: NavProps) => {
 
     const { cartState } = useContext(CartContext)
     const { cartIsOpen } = cartState
@@ -55,42 +58,47 @@ const Nav = ({ collectionsMenu }: NavProps) => {
 
     return (
         <header
-            id="nav-bar"
-            className={renderClassNames(navContatiner)}
-            style={{
-                height: collectionsMenuOpen
-                    ? navBarHeightIntial
-                    : navBarHeightFinal,
-                transition: 'height ease 300ms'
-            }}
+            className={renderClassNames(navHeader)}
         >
             <div
-                id="logo-bar"
-                className={renderClassNames(navContent)}
+                id="nav-bar"
+                className={renderClassNames(navContainer)}
+                style={{
+                    height: collectionsMenuOpen
+                        ? navBarHeightIntial
+                        : navBarHeightFinal,
+                    transition: 'height ease 300ms'
+                }}
             >
-                <a className="text-md font-bold cursor-pointer justify-self-end">
-                    Menu
-                </a>
-                <NavLogo />
-                <button onClick={CartActions.toggleCartOpen}>
-                    Cart
-                </button>
-                <Transition
-                    show={cartIsOpen}
-                    enter="transition-opacity duration-75"
-                    enterFrom="opacity-0"
-                    enterTo="opacity-100"
-                    leave="transition-opacity duration-150"
-                    leaveFrom="opacity-100"
-                    leaveTo="opacity-0"
+                <div
+                    id="logo-bar"
+                    className={renderClassNames(navContent)}
                 >
-                    I will fade in and out
-                </Transition>
+                    <a className="text-md font-bold cursor-pointer justify-self-end">
+                        Menu
+                    </a>
+                    <NavLogo />
+                    <button onClick={CartActions.toggleCartOpen}>
+                        Cart
+                    </button>
+                    <Transition
+                        show={cartIsOpen}
+                        enter="transition-opacity duration-75"
+                        enterFrom="opacity-0"
+                        enterTo="opacity-100"
+                        leave="transition-opacity duration-150"
+                        leaveFrom="opacity-100"
+                        leaveTo="opacity-0"
+                    >
+                        I will fade in and out
+                    </Transition>
+                </div>
+                <CollectionMenu
+                    show={collectionsMenuOpen}
+                    collections={collectionsMenu}
+                />
             </div>
-            <CollectionMenu
-                show={collectionsMenuOpen}
-                collections={collectionsMenu}
-            />
+            <FixedOffers fixedOffers={fixedOffers}/>
         </header>
     )
 }
