@@ -1,4 +1,4 @@
-import { ProductQueries } from "../../query/products";
+import { ProductQueries } from "../../query";
 
 import { ShopifyProvider } from "../../ShopifyProvider"
 

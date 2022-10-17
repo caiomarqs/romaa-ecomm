@@ -1,1 +1,1 @@
-export * as ProductQueries from './get-product'
+export * from './get-product'

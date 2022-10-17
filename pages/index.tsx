@@ -1,16 +1,17 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useEffect } from 'react'
-import { ProductShopifyService } from '../lib/shopify'
+
+import { ColletionShopifyService, ProductShopifyService } from '../lib/shopify'
 import { Nav } from '../src/components'
 import { CartProvider } from '../src/context'
 import { HomePage } from '../src/pages'
 
-const Home: NextPage = ({ products }: any) => {
+const Home: NextPage = ({ products, collectionsMenu }: any) => {
 
   useEffect(() => {
-    console.log(products)
-  })
+    console.log(collectionsMenu)
+  }, [])
 
   return (
     <>
@@ -23,13 +24,15 @@ const Home: NextPage = ({ products }: any) => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https:/camisetasroma.com.br" />
         <meta property="og:image" content="https://camisetasroma.com.br/share.png" />
-        <meta property="og:description"
-          content="Camistas Romã, a melhor loja de peças básicas oversized" />
+        <meta property="og:description" content="Camistas Romã, a melhor loja de peças básicas oversized" />
         <meta property="og:locale" content="en_US" />
         <meta property="og:site_name" content="Camisetas Romã" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
       </Head>
       <CartProvider>
-        <Nav />
+        <Nav collectionsMenu={collectionsMenu} />
         <HomePage products={products} />
       </CartProvider>
     </>
@@ -38,9 +41,13 @@ const Home: NextPage = ({ products }: any) => {
 
 export async function getStaticProps() {
   const products = await ProductShopifyService.getProductsInCollection("frontpage")
+  const collectionsMenu = await ColletionShopifyService.getAllCollectionsMenu()
 
   return {
-    props: { products }
+    props: {
+      products,
+      collectionsMenu
+    }
   }
 }
 

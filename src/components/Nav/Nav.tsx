@@ -1,8 +1,11 @@
+import { useContext, useEffect, useState } from "react"
+
 import { Transition } from "@headlessui/react"
-import { useContext } from "react"
+
 import { CartActions } from "../../actions/CartActions/actions"
 import { CartContext } from "../../context"
 import { renderClassNames } from "../../theme"
+import { CollectionMenu } from "./ColletionMenu"
 
 import { NavLogo } from "./NavLogo"
 import {
@@ -10,21 +13,60 @@ import {
     navContent
 } from "./styles"
 
-const Nav = () => {
+type NavProps = {
+    collectionsMenu: any
+}
+
+const Nav = ({ collectionsMenu }: NavProps) => {
 
     const { cartState } = useContext(CartContext)
     const { cartIsOpen } = cartState
 
+    const [collectionsMenuOpen, setCollectionsMenuOpen] = useState(true)
+    const [navBarHeightIntial, setNavBarHeightIntial] = useState(0)
+    const [navBarHeightFinal, setNavBarHeightFinal] = useState(0)
+
+
+    const eventColletionMenuOpen = () => {
+        const navScrollHeight = document.getElementById('nav-bar')?.scrollHeight ?? 0
+
+        if (window.scrollY <= navScrollHeight) {
+            setCollectionsMenuOpen(true)
+        }
+        else {
+            setCollectionsMenuOpen(false)
+        }
+    }
+
+    const setHeigthInitialStates = () => {
+        setNavBarHeightIntial(document.getElementById('nav-bar')?.scrollHeight ?? 0)
+        setNavBarHeightFinal(document.getElementById('logo-bar')?.scrollHeight ?? 0)
+    }
+
+    useEffect(() => {
+        setHeigthInitialStates()
+        document.addEventListener(
+            'scroll',
+            eventColletionMenuOpen
+        )
+
+        return document.removeEventListener('scroll', () => { })
+    }, [])
+
     return (
         <header
-            className={
-                renderClassNames(navContatiner)
-            }
+            id="nav-bar"
+            className={renderClassNames(navContatiner)}
+            style={{
+                height: collectionsMenuOpen
+                    ? navBarHeightIntial
+                    : navBarHeightFinal,
+                transition: 'height ease 300ms'
+            }}
         >
             <div
-                className={
-                    renderClassNames(navContent)
-                }
+                id="logo-bar"
+                className={renderClassNames(navContent)}
             >
                 <a className="text-md font-bold cursor-pointer justify-self-end">
                     Menu
@@ -45,6 +87,10 @@ const Nav = () => {
                     I will fade in and out
                 </Transition>
             </div>
+            <CollectionMenu
+                show={collectionsMenuOpen}
+                collections={collectionsMenu}
+            />
         </header>
     )
 }

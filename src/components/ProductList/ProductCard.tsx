@@ -22,6 +22,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
                             src={url}
                             layout="fill"
                             objectFit="cover"
+                            priority
                         />
                     </div>
                 </div>

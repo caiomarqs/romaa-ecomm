@@ -4,8 +4,8 @@ const navContatiner: TailWindClassType = [
     'border-b sticky',
     'top-0',
     'z-20',
-    'bg-[#ffffff40]',
-    'backdrop-blur-md'
+    'bg-[#ffffff60]',
+    'backdrop-blur-xl'
 ]
 
 const navContent: TailWindClassType = [
@@ -18,4 +18,20 @@ const navContent: TailWindClassType = [
     'lg:max-w-screen-2xl'
 ]
 
-export { navContatiner, navContent }
+const collectionsMenu: TailWindClassType = [
+    'flex',
+    'justify-around',
+    'mx-auto',
+    'lg:max-w-screen-sm',
+    'pb-2',
+]
+
+const collectionMenuLink: TailWindClassType = [
+    'text-sm',
+    'subpixel-antialiased',
+    'font-normal',
+    'cursor-pointer',
+    'pb-2'
+]
+
+export { navContatiner, navContent, collectionsMenu, collectionMenuLink }
