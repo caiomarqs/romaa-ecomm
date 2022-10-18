@@ -40,16 +40,18 @@ const collectionMenuLink: TailWindClassType = [
 
 const fixedOffersContainer: TailWindClassType = [
     'bg-red',
-    'absolute',
-    'w-100'
+    'flex',
+    'py-1',
+    'px-2',
+    'text-white',
+    'justify-center',
+    'h-[2rem]'
 ]
 
 const fixedOffersTitles: TailWindClassType = [
     'flex',
-    'mx-auto',
-    'lg:max-w-screen-sm',
-    'py-2',
-    'flex-col'
+    'justify-center',
+    'flex-1',
 ]
 
 

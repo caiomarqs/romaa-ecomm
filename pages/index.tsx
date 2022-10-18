@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { useEffect } from 'react'
 
 import { ColletionShopifyService, FixedOffersShopifyService, ProductShopifyService } from '../lib/shopify'
 import { Nav } from '../src/components'
@@ -8,11 +7,6 @@ import { CartProvider } from '../src/context'
 import { HomePage } from '../src/pages'
 
 const Home: NextPage = ({ products, collectionsMenu, fixedOffers }: any) => {
-
-  useEffect(() => {
-    console.log(fixedOffers)
-  }, [])
-
   return (
     <>
       <Head>
