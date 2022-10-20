@@ -1,6 +1,6 @@
 import Link, { LinkProps } from "next/link"
-import { renderClassNames } from "../../theme"
-import { collectionMenuLink } from "./styles"
+import { renderClassNames } from "../../../theme"
+import { collectionMenuLink } from "../styles"
 
 type ColectionMenuLinkProps = {
     linkProps: LinkProps

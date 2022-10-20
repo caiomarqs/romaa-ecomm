@@ -1,7 +1,7 @@
 import { Transition } from "@headlessui/react"
 import { useEffect, useState } from "react"
 import { renderClassNames } from "../../theme"
-import { fixedOffersContainer, fixedOffersTitles } from "./styles"
+import { fixedClose, fixedOffersContainer, fixedOffersTitles } from "./styles"
 
 type FixedOffersProps = {
     fixedOffers: Array<string> | any
@@ -76,8 +76,11 @@ const FixedOffers = ({ fixedOffers }: FixedOffersProps) => {
                             ))
                         }
                     </div>
-                    <div onClick={() => setShowFixedOffers(false)}>
-                        <span className="text-sm cursor-pointer">Fechar</span>
+                    <div
+                        className={renderClassNames(fixedClose)}
+                        onClick={() => setShowFixedOffers(false)}
+                    >
+                        <span className="text-sm">Fechar</span>
                     </div>
                 </div>
             </Transition>

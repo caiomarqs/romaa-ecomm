@@ -3,7 +3,7 @@ import Head from 'next/head'
 
 import { ColletionShopifyService, FixedOffersShopifyService, ProductShopifyService } from '../lib/shopify'
 import { Nav } from '../src/components'
-import { CartProvider } from '../src/context'
+import { CartProvider, NavProvider } from '../src/context'
 import { HomePage } from '../src/pages'
 
 const Home: NextPage = ({ products, collectionsMenu, fixedOffers }: any) => {
@@ -23,15 +23,17 @@ const Home: NextPage = ({ products, collectionsMenu, fixedOffers }: any) => {
         <meta property="og:site_name" content="Camisetas Romã" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"/>
       </Head>
-      <CartProvider>
-        <Nav
-          collectionsMenu={collectionsMenu}
-          fixedOffers={fixedOffers}
-        />
-        <HomePage products={products} />
-      </CartProvider>
+      <NavProvider>
+        <CartProvider>
+          <Nav
+            collectionsMenu={collectionsMenu}
+            fixedOffers={fixedOffers}
+          />
+          <HomePage products={products} />
+        </CartProvider>
+      </NavProvider>
     </>
   )
 }

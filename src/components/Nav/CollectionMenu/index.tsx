@@ -1,7 +1,7 @@
 import { Transition } from "@headlessui/react"
-import { renderClassNames } from "../../theme"
+import { renderClassNames } from "../../../theme"
 import { ColectionMenuLink } from "./CollectionMenuLink"
-import { collectionsMenu } from "./styles"
+import { collectionsMenu } from "../styles"
 
 type CollectionMenuProps = {
     show: boolean,

@@ -6,7 +6,7 @@ import { CartActions } from "../../actions/CartActions/actions"
 import { CartContext } from "../../context"
 import { renderClassNames } from "../../theme"
 
-import { CollectionMenu } from "./ColletionMenu"
+import { CollectionMenu } from "./CollectionMenu"
 import { FixedOffers } from "./FixedOffers"
 import { NavLogo } from "./NavLogo"
 import {
@@ -14,6 +14,10 @@ import {
     navContent,
     navHeader
 } from "./styles"
+import { MenuIcons } from "./MenuIcons"
+import { GeneralMenuIcon } from "./GeneralMenu/GeneralMenuIcon"
+import { GeneralMenu } from "./GeneralMenu"
+
 
 type NavProps = {
     collectionsMenu: any,
@@ -74,13 +78,9 @@ const Nav = ({ collectionsMenu, fixedOffers }: NavProps) => {
                     id="logo-bar"
                     className={renderClassNames(navContent)}
                 >
-                    <a className="text-md font-bold cursor-pointer justify-self-end">
-                        Menu
-                    </a>
+                    <GeneralMenuIcon />
                     <NavLogo />
-                    <button onClick={CartActions.toggleCartOpen}>
-                        Cart
-                    </button>
+                    <MenuIcons />
                     <Transition
                         show={cartIsOpen}
                         enter="transition-opacity duration-75"
@@ -99,6 +99,7 @@ const Nav = ({ collectionsMenu, fixedOffers }: NavProps) => {
                 />
             </div>
             <FixedOffers fixedOffers={fixedOffers}/>
+            <GeneralMenu />
         </header>
     )
 }

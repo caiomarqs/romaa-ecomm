@@ -19,7 +19,13 @@ const navContent: TailWindClassType = [
     'px-4',
     'py-6',
     'mx-auto',
-    'lg:max-w-screen-2xl'
+    'lg:max-w-screen-2xl',
+    'relative'
+]
+
+const logoContainer: TailWindClassType = [
+    'cursor-pointer',
+    'absolute'
 ]
 
 const collectionsMenu: TailWindClassType = [
@@ -35,7 +41,11 @@ const collectionMenuLink: TailWindClassType = [
     'subpixel-antialiased',
     'font-normal',
     'cursor-pointer',
-    'pb-2'
+    'pb-2',
+    'text-zinc-500',
+    'hover:text-red',
+    'ease-linear',
+    'duration-150'
 ]
 
 const fixedOffersContainer: TailWindClassType = [
@@ -45,7 +55,8 @@ const fixedOffersContainer: TailWindClassType = [
     'px-2',
     'text-white',
     'justify-center',
-    'h-[2rem]'
+    'h-[2rem]',
+    'relative'
 ]
 
 const fixedOffersTitles: TailWindClassType = [
@@ -54,13 +65,30 @@ const fixedOffersTitles: TailWindClassType = [
     'flex-1',
 ]
 
+const fixedClose: TailWindClassType = [
+    'cursor-pointer',
+    'absolute',
+    'right-2'
+]
+
+const menuIcon: TailWindClassType = [
+    'cursor-pointer',
+    'text-zinc-500',
+    'hover:text-red',
+    'ease-linear',
+    'duration-150'
+]
+
 
 export {
     navContainer,
     navContent,
     navHeader,
+    logoContainer,
     collectionsMenu,
     collectionMenuLink,
     fixedOffersContainer,
-    fixedOffersTitles
+    fixedOffersTitles,
+    fixedClose,
+    menuIcon
 }
