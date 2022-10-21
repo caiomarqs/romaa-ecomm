@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 
 import { Transition } from "@headlessui/react"
 
-import { CartContext } from "../../context"
+import { CartContext, NavContext } from "../../context"
 import { renderClassNames } from "../../theme"
 
 import { CollectionMenu } from "./CollectionMenu"
@@ -30,7 +30,9 @@ const Nav = ({ collectionsMenu, fixedOffers, colorsMenu }: NavProps) => {
     const { cartState } = useContext(CartContext)
     const { cartIsOpen } = cartState
 
-    const [collectionsMenuOpen, setCollectionsMenuOpen] = useState(true)
+    const { navState } = useContext(NavContext)
+    const { collectionsMenuOpen } = navState
+
     const [navBarHeightIntial, setNavBarHeightIntial] = useState(0)
     const [navBarHeightFinal, setNavBarHeightFinal] = useState(0)
 
@@ -39,10 +41,10 @@ const Nav = ({ collectionsMenu, fixedOffers, colorsMenu }: NavProps) => {
         const navScrollHeight = document.getElementById('nav-bar')?.scrollHeight ?? 0
 
         if (window.scrollY <= navScrollHeight) {
-            setCollectionsMenuOpen(true)
+            NavActions.setCollectionsMenuOpen(true)
         }
         else {
-            setCollectionsMenuOpen(false)
+            NavActions.setCollectionsMenuOpen(false)
         }
     }
 
@@ -52,10 +54,10 @@ const Nav = ({ collectionsMenu, fixedOffers, colorsMenu }: NavProps) => {
     }
 
     useEffect(() => {
-        if(collectionsMenu && colorsMenu) {
+        if (collectionsMenu && colorsMenu) {
             NavActions.setCollectionsMenu(collectionsMenu)
             NavActions.setColorsMenu(colorsMenu)
-        } 
+        }
 
         setHeigthInitialStates()
 
@@ -71,6 +73,7 @@ const Nav = ({ collectionsMenu, fixedOffers, colorsMenu }: NavProps) => {
         <header
             className={renderClassNames(navHeader)}
         >
+                        <FixedOffers fixedOffers={fixedOffers} />
             <div
                 id="nav-bar"
                 className={renderClassNames(navContainer)}
@@ -101,11 +104,10 @@ const Nav = ({ collectionsMenu, fixedOffers, colorsMenu }: NavProps) => {
                     </Transition>
                 </div>
                 <CollectionMenu
-                    show={collectionsMenuOpen}
+                    show={collectionsMenuOpen ?? true}
                     collections={collectionsMenu}
                 />
             </div>
-            <FixedOffers fixedOffers={fixedOffers}/>
             <GeneralMenu />
         </header>
     )

@@ -12,7 +12,11 @@ import {
 } from "./interfaces"
 
 const initialNavState: INavState = {
-    generalMenuIsOpen: false
+    generalMenuIsOpen: false,
+    collectionsMenu: [],
+    colorsMenu: [],
+    showFixedOffers: true,
+    collectionsMenuOpen: true
 }
 
 const intialNavContex: INavContext = {

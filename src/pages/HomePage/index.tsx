@@ -1,3 +1,4 @@
+import { HeroBanner } from "../../components"
 import { PageContainer } from "../../components/PageContainer"
 import { ProductList } from "../../components/ProductList"
 
@@ -7,11 +8,15 @@ type HomePageProps = {
 
 const HomePage = ({ products }: HomePageProps) => {
     return (
-        <PageContainer>
-            <ProductList products={products}/>
-            <ProductList products={products}/>
-            <ProductList products={products}/>
-        </PageContainer>
+        <>
+            <HeroBanner />
+            <PageContainer>
+                <ProductList products={products} />
+                <ProductList products={products} />
+                <ProductList products={products} />
+            </PageContainer>
+        </>
+
     )
 }
 

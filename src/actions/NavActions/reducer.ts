@@ -14,7 +14,7 @@ const navReducer = (state: INavState, action: INavReducerAction): INavState => {
         case NavActionsEnum.CLOSE_GENERAL_MENU: {
             return {
                 ...state,
-                generalMenuIsOpen: action.payload?.generalMenuIsOpen ?? false
+                generalMenuIsOpen: false
             }
         }
         case NavActionsEnum.SET_COLLECTIONS_MENU: {
@@ -27,6 +27,18 @@ const navReducer = (state: INavState, action: INavReducerAction): INavState => {
             return {
                 ...state,
                 colorsMenu: action.payload?.colorsMenu ?? []
+            }
+        }
+        case NavActionsEnum.CLOSE_FIXED_OFFERS: {
+            return {
+                ...state,
+                showFixedOffers: false
+            }
+        }
+        case NavActionsEnum.SET_COLLECTION_MENU_OPEN: {
+            return {
+                ...state,
+                collectionsMenuOpen: action.payload?.collectionsMenuOpen
             }
         }
         default:

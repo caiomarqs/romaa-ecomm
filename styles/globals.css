@@ -3,15 +3,10 @@ html {
 }
 
 
-.visible-mine{
-    visibility: visible;
-    opacity: 100;
-    transition: ease-in 1500ms visibility
-}
-
-.invisible-mine{
-    visibility: hidden;
-    opacity: 0;
+:root {
+    --nav-heigth: 6.8125rem;
+    --collections-menu-heigth: 2.25rem;
+    --fixed-offers-heigth: 2rem;
 }
 
 @tailwind base;

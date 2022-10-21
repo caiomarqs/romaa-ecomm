@@ -17,7 +17,9 @@ const GeneralMenu = () => {
     const {
         generalMenuIsOpen,
         collectionsMenu,
-        colorsMenu
+        colorsMenu,
+        showFixedOffers,
+        collectionsMenuOpen
     } = navState
 
     const [artigosItens, setArtigosItens] = useState([])
@@ -48,13 +50,12 @@ const GeneralMenu = () => {
     return (
         <div
             id="general-menu"
-            className={`${renderClassNames(GeneralMenuContainer)} ${generalMenuIsOpen
+            className={`${renderClassNames(GeneralMenuContainer(showFixedOffers, collectionsMenuOpen))} ${generalMenuIsOpen
                 ?
                 renderClassNames(GeneralMenuContainerOpen)
                 :
                 renderClassNames(GeneralMenuContainerClose)
                 }`}
-
         >
             {
                 (artigosItens && colorsMenu) && <GeneralMenuSection

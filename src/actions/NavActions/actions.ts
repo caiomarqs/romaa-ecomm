@@ -14,6 +14,13 @@ const setCollectionsMenu = (collectionsMenu: any) => {
     })
 }
 
+const setCollectionsMenuOpen = (collectionsMenuOpen: boolean) => {
+    dispatch({
+        type: NavActionsEnum.SET_COLLECTION_MENU_OPEN,
+        payload: { collectionsMenuOpen }
+    })
+}
+
 const setColorsMenu = (colorsMenu: any) => {
     dispatch({
         type: NavActionsEnum.SET_COLORS_MENU,
@@ -25,18 +32,21 @@ const toggleGeneralMenuOpen = () => {
     dispatch({ type: NavActionsEnum.TOGGLE_GENERAL_OPEN })
 }
 
+const closeFixedOffers = () => {
+    dispatch({ type: NavActionsEnum.CLOSE_FIXED_OFFERS })
+}
+
 const closeGeneralMenu = () => {
-    dispatch({
-        type: NavActionsEnum.CLOSE_GENERAL_MENU,
-        payload: { generalMenuIsOpen: false }
-    })
+    dispatch({ type: NavActionsEnum.CLOSE_GENERAL_MENU })
 }
 
 const NavActions = {
     toggleGeneralMenuOpen,
     closeGeneralMenu,
     setCollectionsMenu,
-    setColorsMenu
+    setColorsMenu,
+    closeFixedOffers,
+    setCollectionsMenuOpen
 }
 
 export {

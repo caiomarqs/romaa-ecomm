@@ -79,18 +79,43 @@ const menuIcon: TailWindClassType = [
     'duration-150'
 ]
 
-const GeneralMenuContainer: TailWindClassType = [
-    'border-r',
-    'bg-[#ffffff60]',
-    'backdrop-blur-xl',
-    'h-[100vh]',
-    'px-6',
-    'py-10',
-    'absolute',
-    'transition-[width, opacity, visibility]',
-    'ease',
-    'duration-300',
-]
+const GeneralMenuContainer = (
+    showFixedOffers: boolean | undefined,
+    collectionsMenuOpen: boolean | undefined
+): TailWindClassType => {
+
+    const styles: TailWindClassType = [
+        'border-r',
+        'bg-[#ffffff60]',
+        'backdrop-blur-xl',
+        'px-6',
+        'fixed',
+        'top-0',
+        'z-[-1]',
+        'h-[100%]',
+        'transition-[width, opacity, visibility]',
+        'ease',
+        'duration-300'
+    ]
+
+    if (showFixedOffers && collectionsMenuOpen) {
+        styles.push('pt-[168px]')
+        return styles
+    }
+
+    if (collectionsMenuOpen) {
+        styles.push('pt-[8.5rem]')
+        return styles
+    }
+
+    if (showFixedOffers) {
+        styles.push('pt-[8.25rem]')
+        return styles
+    }
+
+    styles.push('pt-[6.25rem]')
+    return styles
+}
 
 const GeneralMenuContainerOpen: TailWindClassType = [
     'w-[46rem]',
@@ -130,11 +155,11 @@ const generalMenuSectionContainer = (
         'px-2'
     ]
 
-    if(!isFirstSection) {
+    if (!isFirstSection) {
         styles.push('mt-6')
     }
 
-    if(!isLastSection) {
+    if (!isLastSection) {
         styles.push('border-b')
     }
 

@@ -1,5 +1,7 @@
 import { Transition } from "@headlessui/react"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import { NavActions } from "../../actions"
+import { NavContext } from "../../context"
 import { renderClassNames } from "../../theme"
 import { fixedClose, fixedOffersContainer, fixedOffersTitles } from "./styles"
 
@@ -9,7 +11,8 @@ type FixedOffersProps = {
 
 const FixedOffers = ({ fixedOffers }: FixedOffersProps) => {
 
-    const [showFixedOffers, setShowFixedOffers] = useState(true)
+    const { navState } = useContext(NavContext)
+    const { showFixedOffers } = navState
 
     const [offersShow, setOffersShow] = useState<number>(0)
 
@@ -78,7 +81,7 @@ const FixedOffers = ({ fixedOffers }: FixedOffersProps) => {
                     </div>
                     <div
                         className={renderClassNames(fixedClose)}
-                        onClick={() => setShowFixedOffers(false)}
+                        onClick={NavActions.closeFixedOffers}
                     >
                         <span className="text-sm">Fechar</span>
                     </div>

@@ -6,6 +6,8 @@ interface INavState {
     generalMenuIsOpen?: boolean,
     collectionsMenu?: any,
     colorsMenu?: any,
+    showFixedOffers?: boolean,
+    collectionsMenuOpen?: boolean
 }
 
 type INavDispatch = React.Dispatch<INavReducerAction> | Function
