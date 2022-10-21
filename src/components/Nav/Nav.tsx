@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react"
 
 import { Transition } from "@headlessui/react"
 
-import { CartActions } from "../../actions/CartActions/actions"
 import { CartContext } from "../../context"
 import { renderClassNames } from "../../theme"
 
@@ -17,14 +16,16 @@ import {
 import { MenuIcons } from "./MenuIcons"
 import { GeneralMenuIcon } from "./GeneralMenu/GeneralMenuIcon"
 import { GeneralMenu } from "./GeneralMenu"
+import { NavActions } from "../../actions"
 
 
 type NavProps = {
     collectionsMenu: any,
-    fixedOffers: any
+    fixedOffers: any,
+    colorsMenu: any
 }
 
-const Nav = ({ collectionsMenu, fixedOffers }: NavProps) => {
+const Nav = ({ collectionsMenu, fixedOffers, colorsMenu }: NavProps) => {
 
     const { cartState } = useContext(CartContext)
     const { cartIsOpen } = cartState
@@ -51,7 +52,13 @@ const Nav = ({ collectionsMenu, fixedOffers }: NavProps) => {
     }
 
     useEffect(() => {
+        if(collectionsMenu && colorsMenu) {
+            NavActions.setCollectionsMenu(collectionsMenu)
+            NavActions.setColorsMenu(colorsMenu)
+        } 
+
         setHeigthInitialStates()
+
         document.addEventListener(
             'scroll',
             eventColletionMenuOpen

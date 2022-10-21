@@ -20,21 +20,25 @@ type GeneralMenuSectionProps = {
     sections: Array<SectionType>
 }
 
-
 const GeneralMenuSection = ({ title, sections }: GeneralMenuSectionProps) => {
 
     const renderItens = (itens: Array<SubsectionItensType>) => (
         <div className={renderClassNames(generalMenuItensContainer)}>
             {
-                itens.map(item => (
-                    <GeneralMenuLink path={item.path} title={item.title} />
+                itens.map((item, i: number) => (
+                    <GeneralMenuLink
+                        key={item.title + i}
+                        path={item.path}
+                        title={item.title}
+                    />
                 ))
             }
         </div>
     )
 
-    const renderSection = (section: SectionType, isFirstSection: boolean, isLastSection: boolean) => (
+    const renderSection = (section: SectionType, isFirstSection: boolean, isLastSection: boolean, i: number) => (
         <div
+            key={section.title ?? "" + i}
             className={renderClassNames(
                 generalMenuSectionContainer(isFirstSection, isLastSection)
             )}
@@ -55,7 +59,8 @@ const GeneralMenuSection = ({ title, sections }: GeneralMenuSectionProps) => {
             ? renderSection(
                 section,
                 i === 0,
-                i === lastSectionIndex
+                i === lastSectionIndex,
+                i
             )
             : renderItens(section.itens)
         )

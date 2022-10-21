@@ -1,7 +1,9 @@
 import { Transition } from "@headlessui/react"
+
 import { renderClassNames } from "../../../theme"
+
+import { collectionsMenuContainer } from "../styles"
 import { ColectionMenuLink } from "./CollectionMenuLink"
-import { collectionsMenu } from "../styles"
 
 type CollectionMenuProps = {
     show: boolean,
@@ -20,7 +22,7 @@ const CollectionMenu = ({ show, collections }: CollectionMenuProps) => {
             leaveFrom="origin-top opacity-100 scale-y-100"
             leaveTo="opacity-0 scale-y-0"
         >
-            <div className={renderClassNames(collectionsMenu)}>
+            <div className={renderClassNames(collectionsMenuContainer)}>
                 {
                     collections.map((collection: any) => (
                         <ColectionMenuLink

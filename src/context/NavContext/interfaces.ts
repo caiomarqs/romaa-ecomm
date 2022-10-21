@@ -3,7 +3,9 @@ import { ReactNode } from "react"
 import { INavReducerAction } from "../../actions/NavActions"
 
 interface INavState {
-    generalMenuIsOpen: boolean
+    generalMenuIsOpen?: boolean,
+    collectionsMenu?: any,
+    colorsMenu?: any,
 }
 
 type INavDispatch = React.Dispatch<INavReducerAction> | Function

@@ -1,16 +1,49 @@
-import { Dialog, Transition } from "@headlessui/react"
-import { title } from "process"
-import { Fragment, useContext, useEffect, useState } from "react"
-import { NavActions } from "../../../actions"
+import { useContext, useEffect, useState } from "react"
+
 import { NavContext } from "../../../context"
 import { renderClassNames } from "../../../theme"
-import { GeneralMenuContainer, GeneralMenuContainerClose, GeneralMenuContainerOpen } from "../styles"
+
+import {
+    GeneralMenuContainer,
+    GeneralMenuContainerClose,
+    GeneralMenuContainerOpen
+} from "../styles"
+
 import { GeneralMenuSection } from "./GeneralMenuSection"
 
 const GeneralMenu = () => {
 
     const { navState } = useContext(NavContext)
-    const { generalMenuIsOpen } = navState
+    const {
+        generalMenuIsOpen,
+        collectionsMenu,
+        colorsMenu
+    } = navState
+
+    const [artigosItens, setArtigosItens] = useState([])
+    const [coresItens, setCoresItens] = useState([])
+
+    const mapMenus = (collectionsMenu: any) => (
+        collectionsMenu.map((collection: any) => ({
+            title: collection.title,
+            path: `/collections/${collection.handle}`
+        }))
+    )
+
+    useEffect(() => {
+
+        if (collectionsMenu) {
+            setArtigosItens(mapMenus(collectionsMenu))
+        }
+
+
+        if (colorsMenu) {
+            setCoresItens(mapMenus(colorsMenu))
+        }
+
+    }, [collectionsMenu, colorsMenu])
+
+
 
     return (
         <div
@@ -23,42 +56,23 @@ const GeneralMenu = () => {
                 }`}
 
         >
-            <GeneralMenuSection
-                title="Shop"
-                sections={[
-                    {
-                        isSubSection: true,
-                        title: "Artigos",
-                        itens: [{
-                            title: "Camisetas",
-                            path: "/collections/camisetas"
+            {
+                (artigosItens && colorsMenu) && <GeneralMenuSection
+                    title="Shop"
+                    sections={[
+                        {
+                            isSubSection: true,
+                            title: "Artigos",
+                            itens: artigosItens
                         },
                         {
-                            title: "Moletons",
-                            path: "/collections/moletons"
+                            isSubSection: true,
+                            title: "Palheta de Cor",
+                            itens: coresItens
                         }
-                        ]
-                    },
-                    {
-                        isSubSection: true,
-                        title: "Palheta de Cor",
-                        itens: [
-                            {
-                                title: 'Preto',
-                                path: '/collections/pretos'
-                            },
-                            {
-                                title: 'Creme',
-                                path: '/collections/pretos'
-                            },
-                            {
-                                title: 'Branco',
-                                path: '/collections/pretos'
-                            }
-                        ]
-                    }
-                ]}
-            />
+                    ]}
+                />
+            }
             <GeneralMenuSection
                 title="Arquivo"
                 sections={[

@@ -17,10 +17,21 @@ const navReducer = (state: INavState, action: INavReducerAction): INavState => {
                 generalMenuIsOpen: action.payload?.generalMenuIsOpen ?? false
             }
         }
+        case NavActionsEnum.SET_COLLECTIONS_MENU: {
+            return {
+                ...state,
+                collectionsMenu: action.payload?.collectionsMenu ?? []
+            }
+        }
+        case NavActionsEnum.SET_COLORS_MENU: {
+            return {
+                ...state,
+                colorsMenu: action.payload?.colorsMenu ?? []
+            }
+        }
         default:
-            return state;
+            return state
     }
-
 }
 
 export {

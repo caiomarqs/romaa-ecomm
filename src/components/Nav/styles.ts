@@ -28,7 +28,7 @@ const logoContainer: TailWindClassType = [
     'absolute'
 ]
 
-const collectionsMenu: TailWindClassType = [
+const collectionsMenuContainer: TailWindClassType = [
     'flex',
     'justify-around',
     'mx-auto',
@@ -165,7 +165,7 @@ export {
     navContent,
     navHeader,
     logoContainer,
-    collectionsMenu,
+    collectionsMenuContainer,
     collectionMenuLink,
     fixedOffersContainer,
     fixedOffersTitles,

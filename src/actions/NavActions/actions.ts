@@ -7,6 +7,19 @@ const setNavContexDispatch = (reciveDispatch: INavDispatch) => {
     dispatch = reciveDispatch
 }
 
+const setCollectionsMenu = (collectionsMenu: any) => {
+    dispatch({
+        type: NavActionsEnum.SET_COLLECTIONS_MENU,
+        payload: { collectionsMenu }
+    })
+}
+
+const setColorsMenu = (colorsMenu: any) => {
+    dispatch({
+        type: NavActionsEnum.SET_COLORS_MENU,
+        payload: { colorsMenu }
+    })
+}
 
 const toggleGeneralMenuOpen = () => {
     dispatch({ type: NavActionsEnum.TOGGLE_GENERAL_OPEN })
@@ -21,7 +34,9 @@ const closeGeneralMenu = () => {
 
 const NavActions = {
     toggleGeneralMenuOpen,
-    closeGeneralMenu
+    closeGeneralMenu,
+    setCollectionsMenu,
+    setColorsMenu
 }
 
 export {

@@ -1,12 +1,17 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
-import { ColletionShopifyService, FixedOffersShopifyService, ProductShopifyService } from '../lib/shopify'
+import { ColletionShopifyService, ColorsShopifyService, FixedOffersShopifyService, ProductShopifyService } from '../lib/shopify'
 import { Nav } from '../src/components'
 import { CartProvider, NavProvider } from '../src/context'
 import { HomePage } from '../src/pages'
 
-const Home: NextPage = ({ products, collectionsMenu, fixedOffers }: any) => {
+const Home: NextPage = ({
+  products, 
+  collectionsMenu, 
+  fixedOffers, 
+  colorsMenu
+}: any) => {
   return (
     <>
       <Head>
@@ -23,13 +28,14 @@ const Home: NextPage = ({ products, collectionsMenu, fixedOffers }: any) => {
         <meta property="og:site_name" content="Camisetas Romã" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"/>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" />
       </Head>
       <NavProvider>
         <CartProvider>
           <Nav
             collectionsMenu={collectionsMenu}
             fixedOffers={fixedOffers}
+            colorsMenu={colorsMenu}
           />
           <HomePage products={products} />
         </CartProvider>
@@ -41,13 +47,15 @@ const Home: NextPage = ({ products, collectionsMenu, fixedOffers }: any) => {
 export async function getStaticProps() {
   const products = await ProductShopifyService.getProductsInCollection("frontpage")
   const collectionsMenu = await ColletionShopifyService.getAllCollectionsMenu()
+  const colorsMenu = await ColorsShopifyService.getAllColorsMenu()
   const fixedOffers = await FixedOffersShopifyService.getFixedOffers()
 
   return {
     props: {
       products,
       collectionsMenu,
-      fixedOffers
+      fixedOffers,
+      colorsMenu
     }
   }
 }
