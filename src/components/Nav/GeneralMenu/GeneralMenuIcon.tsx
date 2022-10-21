@@ -4,7 +4,6 @@ import {
     XMarkIcon
 } from '@heroicons/react/24/outline'
 
-
 import { NavContext } from '../../../context'
 import { renderClassNames } from '../../../theme'
 import { NavActions } from '../../../actions'
