@@ -8,7 +8,7 @@ const navHeader: TailWindClassType = [
 
 const navContainer: TailWindClassType = [
     'border-b',
-    'bg-[#ffffff60]',
+    'bg-[#ffffffb9]',
     'backdrop-blur-xl'
 ]
 
@@ -86,7 +86,7 @@ const GeneralMenuContainer = (
 
     const styles: TailWindClassType = [
         'border-r',
-        'bg-[#ffffff60]',
+        'bg-[#ffffffb9]',
         'backdrop-blur-xl',
         'px-6',
         'fixed',

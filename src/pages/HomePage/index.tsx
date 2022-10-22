@@ -3,13 +3,14 @@ import { PageContainer } from "../../components/PageContainer"
 import { ProductList } from "../../components/ProductList"
 
 type HomePageProps = {
-    products: any
+    products: any,
+    heroBanners: any
 }
 
-const HomePage = ({ products }: HomePageProps) => {
+const HomePage = ({ products, heroBanners }: HomePageProps) => {
     return (
         <>
-            <HeroBanner />
+            <HeroBanner heroBanners={heroBanners} />
             <PageContainer>
                 <ProductList products={products} />
                 <ProductList products={products} />

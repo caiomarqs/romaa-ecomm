@@ -8,6 +8,12 @@ const getBlogByHandle = (handle: string): string => {
               node {
                 id
                 title
+                image {
+                  id
+                  url
+                  altText
+                }
+                contentHtml
               }
             }
           }

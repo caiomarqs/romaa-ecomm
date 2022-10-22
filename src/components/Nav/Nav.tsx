@@ -73,7 +73,6 @@ const Nav = ({ collectionsMenu, fixedOffers, colorsMenu }: NavProps) => {
         <header
             className={renderClassNames(navHeader)}
         >
-                        <FixedOffers fixedOffers={fixedOffers} />
             <div
                 id="nav-bar"
                 className={renderClassNames(navContainer)}
@@ -109,6 +108,7 @@ const Nav = ({ collectionsMenu, fixedOffers, colorsMenu }: NavProps) => {
                 />
             </div>
             <GeneralMenu />
+            <FixedOffers fixedOffers={fixedOffers} />
         </header>
     )
 }

@@ -2,13 +2,6 @@ html {
     cursor: url(../public/auto-cursor.cur), auto;
 }
 
-
-:root {
-    --nav-heigth: 6.8125rem;
-    --collections-menu-heigth: 2.25rem;
-    --fixed-offers-heigth: 2rem;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

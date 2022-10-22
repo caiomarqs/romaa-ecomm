@@ -13,6 +13,9 @@ module.exports = {
     extend: {
       cursor: {
         'auto': 'url(../public/auto-cursor.cur), auto'
+      },
+      height: {
+        'hero-banner': 'calc(100vh - 10.5rem)',
       }
     },
     colors: {

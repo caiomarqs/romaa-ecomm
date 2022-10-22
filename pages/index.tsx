@@ -1,16 +1,17 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
-import { ColletionShopifyService, ColorsShopifyService, FixedOffersShopifyService, ProductShopifyService } from '../lib/shopify'
+import { ColletionShopifyService, ColorsShopifyService, FixedOffersShopifyService, HeroBannersShopifyService, ProductShopifyService } from '../lib/shopify'
 import { Nav } from '../src/components'
 import { CartProvider, NavProvider } from '../src/context'
 import { HomePage } from '../src/pages'
 
 const Home: NextPage = ({
-  products, 
-  collectionsMenu, 
-  fixedOffers, 
-  colorsMenu
+  products,
+  collectionsMenu,
+  fixedOffers,
+  colorsMenu,
+  heroBanners
 }: any) => {
   return (
     <>
@@ -28,7 +29,7 @@ const Home: NextPage = ({
         <meta property="og:site_name" content="Camisetas Romã" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
       </Head>
       <NavProvider>
         <CartProvider>
@@ -37,7 +38,10 @@ const Home: NextPage = ({
             fixedOffers={fixedOffers}
             colorsMenu={colorsMenu}
           />
-          <HomePage products={products} />
+          <HomePage
+            products={products}
+            heroBanners={heroBanners}
+          />
         </CartProvider>
       </NavProvider>
     </>
@@ -49,13 +53,15 @@ export async function getStaticProps() {
   const collectionsMenu = await ColletionShopifyService.getAllCollectionsMenu()
   const colorsMenu = await ColorsShopifyService.getAllColorsMenu()
   const fixedOffers = await FixedOffersShopifyService.getFixedOffers()
+  const heroBanners = await HeroBannersShopifyService.getHeroBanners()
 
   return {
     props: {
       products,
       collectionsMenu,
       fixedOffers,
-      colorsMenu
+      colorsMenu,
+      heroBanners
     }
   }
 }
