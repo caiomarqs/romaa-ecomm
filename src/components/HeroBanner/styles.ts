@@ -24,45 +24,31 @@ const HeroBannerImage: TailWindClassType = [
     'object-cover'
 ]
 
-const HeroBannerTitle = (primaryColor: string): TailWindClassType=> {
-    return [
-        `text-[${primaryColor}]`,
-        'text-2xl',
-        'font-black'
-    ]
-}
+const HeroBannerTitle: TailWindClassType = [
+    'text-2xl',
+    'font-black'
+]
 
-const HeroBannerSubTitle = (primaryColor: string): TailWindClassType=> {
-    return [
-        `text-[${primaryColor}]`,
-        'text-base',
-        'font-light'
-    ]
-}
+const HeroBannerSubTitle: TailWindClassType = [
+    'text-base',
+    'font-light'
+]
 
-const HeroBannerButton = (primaryColor: string, secondColor: string): TailWindClassType=> {
-    return [
-        'cursor-pointer',
-        'py-2',
-        'px-4',
-        'mt-4',
-        `bg-[${primaryColor}]`,
-        'border',
-        `border-[${primaryColor}]`,
-        'rounded-md',
-        `text-[${primaryColor}]`,
-        'text-sm',
-        'capitalize',
-        'font-bold',
-        'w-fit',
-        'hover:border-[transparent]',
-        `hover:text-[${secondColor}]`,
-        `hover:bg-[${primaryColor}]`,
-        'transition-[color, background-color]',
-        'ease',
-        'duration-150'
-    ]
-}
+const HeroBannerButton: TailWindClassType = [
+    'cursor-pointer',
+    'py-2',
+    'px-4',
+    'mt-4',
+    'border',
+    'rounded-md',
+    'text-sm',
+    'capitalize',
+    'font-bold',
+    'w-fit',
+    'transition-[color, background-color]',
+    'ease',
+    'duration-150'
+]
 
 export {
     HeroBannerContainer,
