@@ -1,11 +1,21 @@
 const domain = process.env.SHOPFY_STORE_DOMAIN
-const slug = process.env.SHOPFY_STOREFRONT_ACCESSTOKEN
+const storeFrontSlug = process.env.SHOPFY_STOREFRONT_ACCESSTOKEN
+const adminSlug = process.env.SHOPFY_ADMIN_ACCESSTOKEN
 
-const ShopifyProvider = async (query: string) => {
-    const URL = `https://${domain}/api/2022-10/graphql.json`
+const ShopifyProvider = async (query: string, isAdmin: boolean = false) => {
+
+    let URL = `https://${domain}/api/2022-10/graphql.json`
 
     const requestHeaders: HeadersInit = new Headers()
-    requestHeaders.set('X-Shopify-Storefront-Access-Token', slug ?? "")
+
+    if (isAdmin) {
+        URL = `https://${domain}/admin/api/2022-10/graphql.json`
+        requestHeaders.set('X-Shopify-Access-Token', adminSlug ?? "")
+    }
+    else{
+        requestHeaders.set('X-Shopify-Storefront-Access-Token', storeFrontSlug ?? "")
+    }
+
     requestHeaders.set('Accept', 'application/json')
     requestHeaders.set('Content-Type', 'application/json')
 
