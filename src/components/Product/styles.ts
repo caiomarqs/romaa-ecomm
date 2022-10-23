@@ -21,7 +21,7 @@ const VariantSpanStyle = [
     'flex',
     'items-center',
     'justify-center',
-    'transition-[color, background-color]',
+    'transition-[color, background-color, border]',
     'ease',
     'duration-150'
 ]
@@ -55,9 +55,50 @@ const TooltipContainer = (open: boolean) => {
     return styles
 }
 
+const QntdButtonStyle = [
+    'cursor-pointer',
+    'text-sm',
+    'font-bold',
+    'w-[1.5rem]',
+    'h-[3rem]',
+    'flex',
+    'items-center',
+    'justify-center',
+    'outline-none',
+    'transition-[color, background-color, border]',
+    'ease',
+    'duration-150'
+]
+
+const MinusButtonStyle = [
+    ...QntdButtonStyle,
+    'border-y',
+    'border-l',
+    'rounded-l-lg',
+]
+
+const PlusButtonStyle = [
+    ...QntdButtonStyle,
+    'border-y',
+    'border-r',
+    'rounded-r-lg',
+]
+
+const QntdInputStyles = [
+    'border',
+    'w-[3rem]',
+    'outline-none',
+    'text-center',
+    'text-sm',
+    'font-bold'
+]
+
 export {
     OneHighlightContainer,
     VariantSpanStyle,
     TooltipSpan,
-    TooltipContainer
+    TooltipContainer,
+    MinusButtonStyle,
+    PlusButtonStyle,
+    QntdInputStyles
 }

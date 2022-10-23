@@ -28,8 +28,8 @@ const VariantButton = ({
 
     const insetStyle = {
         backgroundColor: 'transparent',
-        borderColor: '#52525b',
-        color: '#52525b'
+        borderColor: '#a1a1aa',
+        color: '#a1a1aa'
     }
 
     const disableStyle = {
