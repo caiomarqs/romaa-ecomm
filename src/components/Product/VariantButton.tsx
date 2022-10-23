@@ -1,9 +1,8 @@
-import { Popover } from "@headlessui/react"
-import { Key, MouseEventHandler, useEffect, useState } from "react"
-import { renderClassNames } from "../../theme"
-import { SoldOutTip } from "./SoldOutTip"
+import { Key, MouseEventHandler, useState } from "react"
 
-import { VariantSpanStyle, TooltipSpan, TooltipContainer } from "./styles"
+import { OutlineBaseButton } from "../Buttons"
+
+import { SoldOutTip } from "./SoldOutTip"
 
 type VariantButtonProps = {
     isLastVariant: boolean,
@@ -42,48 +41,34 @@ const VariantButton = ({
 
     const [buttonStyles, setButtonStyles] = useState(disable ? disableStyle : insetStyle)
 
-    const [buttonClick, setButtonClick] = useState(false)
-
-    useEffect(() => {
-
-        if (!isActive && !disable) {
-            setButtonStyles(insetStyle)
-        }
-
-    }, [isActive])
-
-
-    const onMouseOver = () => {
-        setButtonStyles(selectedStyle)
-    }
-
-    const onMouseLeave = () => {
-        setButtonStyles(insetStyle)
-    }
+    const [warningAction, setWaringAction] = useState(false)
 
     return (
         <>
             <div
-                className={`outline-none ${!isLastVariant ? 'mr-4' : ''}`}
-                onClick={disable ? () => setButtonClick(true) : onClick}
+                className={`${!isLastVariant ? 'mr-4' : ''}`}
             >
-                <span
+                <OutlineBaseButton
                     key={variant.title}
-                    className={renderClassNames(VariantSpanStyle)}
-                    onMouseOver={(isActive || disable) ? () => { } : onMouseOver}
-                    onMouseLeave={(isActive || disable) ? () => { } : onMouseLeave}
-                    style={buttonStyles}
+                    onClick={onClick}
+                    type="select"
+                    sizeButton="square"
+                    buttonDisable={{
+                        disable,
+                        disableWarningAction: () => setWaringAction(true)
+                    }}
+                    buttonActive={isActive}
                 >
                     {variant.title}
-                </span>
+                </OutlineBaseButton>
                 {
                     disable
                     &&
                     <SoldOutTip
-                        open={buttonClick}
-                        onClose={() => { setButtonClick(false) }}
+                        open={warningAction}
+                        onClose={() => { setWaringAction(false) }}
                     />
-                }
+                } 
             </div>
         </>
     )

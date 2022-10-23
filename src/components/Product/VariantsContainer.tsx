@@ -40,7 +40,6 @@ const VariantsContainer = ({ variants }: VariantsContainerProps) => {
             {
                 variants.map(renderVariant)
             }
-            <QntdInput />
         </div>
     )
 }

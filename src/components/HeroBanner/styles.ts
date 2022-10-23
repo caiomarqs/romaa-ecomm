@@ -29,26 +29,9 @@ const HeroBannerSubTitle: TailWindClassType = [
     'font-light'
 ]
 
-const HeroBannerButton: TailWindClassType = [
-    'cursor-pointer',
-    'py-2',
-    'px-4',
-    'mt-4',
-    'border',
-    'rounded-md',
-    'text-sm',
-    'capitalize',
-    'font-bold',
-    'w-fit',
-    'transition-[color, background-color]',
-    'ease',
-    'duration-150'
-]
-
 export {
     HeroBannerContainer,
     HeroBannerContent,
     HeroBannerImage,
-    HeroBannerSubTitle,
-    HeroBannerButton
+    HeroBannerSubTitle
 }

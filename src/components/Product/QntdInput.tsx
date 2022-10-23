@@ -71,7 +71,7 @@ const QntdInput = () => {
     }
 
     return (
-        <div className='flex ml-4'>
+        <div className='flex'>
             <button
                 onClick={() => changeQntd((qntdValue == "" ? 0 : qntdValue as number) - 1)}
                 className={renderClassNames(MinusButtonStyle)}

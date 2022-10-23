@@ -5,6 +5,7 @@ import { SectionTitle } from "../Typos"
 
 import { VariantsContainer } from "./VariantsContainer"
 import { OneHighlightContainer } from "./styles"
+import { QntdInput } from "./QntdInput"
 
 type OneHighlightProps = {
     oneHighlight: any
@@ -45,6 +46,7 @@ const OneHighlight = ({ oneHighlight }: OneHighlightProps) => {
                     <VariantsContainer
                         variants={variants}
                     />
+                    <QntdInput />
                 </div>
             </div>
         </div>
