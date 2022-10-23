@@ -24,11 +24,6 @@ const HeroBannerImage: TailWindClassType = [
     'object-cover'
 ]
 
-const HeroBannerTitle: TailWindClassType = [
-    'text-2xl',
-    'font-black'
-]
-
 const HeroBannerSubTitle: TailWindClassType = [
     'text-base',
     'font-light'
@@ -54,7 +49,6 @@ export {
     HeroBannerContainer,
     HeroBannerContent,
     HeroBannerImage,
-    HeroBannerTitle,
     HeroBannerSubTitle,
     HeroBannerButton
 }

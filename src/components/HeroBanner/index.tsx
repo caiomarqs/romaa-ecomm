@@ -1,13 +1,13 @@
 import Link from "next/link"
 import { CSSProperties, useEffect, useState } from "react"
 import { renderClassNames, TailWindClassType } from "../../theme"
+import { SectionTitle } from "../Typos"
 
 import {
     HeroBannerContainer,
     HeroBannerContent,
     HeroBannerImage,
     HeroBannerSubTitle,
-    HeroBannerTitle,
     HeroBannerButton
 } from "./styles"
 
@@ -51,12 +51,11 @@ const HeroBanner = ({ heroBanners }: HeroBannerProps) => {
                 src={heroBanners[0].img.src}
             />
             <div className={renderClassNames(HeroBannerContent)}>
-                <h1
-                    className={renderClassNames(HeroBannerTitle)}
-                    style={{ color: primaryColor, }}
+                <SectionTitle
+                    elementProps={{ style: { color: primaryColor } }}
                 >
                     {heroBanners[0].title}
-                </h1>
+                </SectionTitle>
                 <h4
                     className={renderClassNames(HeroBannerSubTitle)}
                     style={{ color: primaryColor }}

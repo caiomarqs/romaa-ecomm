@@ -1,6 +1,8 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
+import { NavActions } from "../../../actions"
 
 import { NavContext } from "../../../context"
+import { useClickOutSideRef } from "../../../hooks"
 import { renderClassNames } from "../../../theme"
 
 import {
@@ -12,6 +14,8 @@ import {
 import { GeneralMenuSection } from "./GeneralMenuSection"
 
 const GeneralMenu = () => {
+
+    const generalMenuRef = useRef(null)
 
     const { navState } = useContext(NavContext)
     const {
@@ -32,6 +36,8 @@ const GeneralMenu = () => {
         }))
     )
 
+    useClickOutSideRef(generalMenuRef, () => { NavActions.closeGeneralMenu() })
+
     useEffect(() => {
 
         if (collectionsMenu) {
@@ -49,8 +55,11 @@ const GeneralMenu = () => {
 
     return (
         <div
+            ref={generalMenuRef}
             id="general-menu"
-            className={`${renderClassNames(GeneralMenuContainer(showFixedOffers, collectionsMenuOpen))} ${generalMenuIsOpen
+            className={`${renderClassNames(
+                GeneralMenuContainer(showFixedOffers, collectionsMenuOpen)
+            )} ${generalMenuIsOpen
                 ?
                 renderClassNames(GeneralMenuContainerOpen)
                 :

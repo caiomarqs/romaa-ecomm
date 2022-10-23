@@ -1,4 +1,4 @@
-import { HeroBanner } from "../../components"
+import { HeroBanner, Highlights } from "../../components"
 import { PageContainer } from "../../components/PageContainer"
 import { ProductList } from "../../components/ProductList"
 
@@ -8,13 +8,23 @@ type HomePageProps = {
 }
 
 const HomePage = ({ products, heroBanners }: HomePageProps) => {
+
+    const highlights = products.filter((product: any) => (
+        product.tags.includes("Novidades"))
+    )
+
+    const restOfProducts = products.filter((product: any) => (
+        !product.tags.includes("Novidades"))
+    )
+
     return (
         <>
             <HeroBanner heroBanners={heroBanners} />
             <PageContainer>
-                <ProductList products={products} />
-                <ProductList products={products} />
-                <ProductList products={products} />
+                <Highlights highlights={highlights} />
+                <ProductList products={restOfProducts} />
+                <ProductList products={restOfProducts} />
+                <ProductList products={restOfProducts} />
             </PageContainer>
         </>
 

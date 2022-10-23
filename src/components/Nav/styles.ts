@@ -43,13 +43,13 @@ const collectionMenuLink: TailWindClassType = [
     'cursor-pointer',
     'pb-2',
     'text-zinc-500',
-    'hover:text-red',
+    'hover:text-main',
     'ease-linear',
     'duration-150'
 ]
 
 const fixedOffersContainer: TailWindClassType = [
-    'bg-red',
+    'bg-main',
     'flex',
     'py-1',
     'px-2',
@@ -74,7 +74,7 @@ const fixedClose: TailWindClassType = [
 const menuIcon: TailWindClassType = [
     'cursor-pointer',
     'text-zinc-500',
-    'hover:text-red',
+    'hover:text-main',
     'ease-linear',
     'duration-150'
 ]
@@ -179,7 +179,7 @@ const generalMenuLink: TailWindClassType = [
     'cursor-pointer',
     'pb-4',
     'text-zinc-500',
-    'hover:text-red',
+    'hover:text-main',
     'ease-linear',
     'duration-150'
 ]

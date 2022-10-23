@@ -1,33 +1,44 @@
 const getProductsInCollection = (collectionName: string): string => `
-    {
-        collection(handle: "${collectionName}") {
+  {
+    collection(handle: "frontpage") {
+      title
+      products(first: 25) {
+        edges {
+          node {
+            id
             title
-            products(first: 25) {
-                edges {
-                  node {
-                    id
-                    title
-                    handle
-                    availableForSale
-                    priceRange {
-                      minVariantPrice {
-                        amount
-                      }
-                    }
-                    images(first: 10) {
-                      edges {
-                        node {
-                          url
-                        }
-                      }
-                    }
-                  }
-                }
+            handle
+            availableForSale
+            description
+            descriptionHtml
+            priceRange {
+              minVariantPrice {
+                amount
+              }
             }
+            variants(first: 10) {
+              edges {
+                node {
+                  title
+                  availableForSale
+                }
+              }
+            }
+            tags
+            images(first: 2) {
+              edges {
+                node {
+                  url
+                }
+              }
+            }
+          }
         }
+      }
     }
+  }
 `
 
 export {
-    getProductsInCollection
+  getProductsInCollection
 }
