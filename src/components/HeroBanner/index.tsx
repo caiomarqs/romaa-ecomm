@@ -44,13 +44,7 @@ const HeroBanner = ({ heroBanners }: HeroBannerProps) => {
                     path={heroBanners[0].action.path}
                     className="mt-4"
                     isetColors={{
-                        backgroundColor: 'transparent',
-                        borderColor: primaryColor,
-                        color: primaryColor
-                    }}
-                    activeColors={{
                         backgroundColor: primaryColor,
-                        borderColor: primaryColor,
                         color: secondColor
                     }}
                 >

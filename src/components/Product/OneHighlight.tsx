@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
+import { MagnifyingGlassIcon, ShoppingCartIcon } from '@heroicons/react/20/solid'
 
 import { renderClassNames } from "../../theme"
 import { SectionTitle } from "../Typos"
@@ -29,6 +29,36 @@ const OneHighlight = ({ oneHighlight }: OneHighlightProps) => {
 
     const [imgIndex, setImgIndex] = useState(0)
 
+    const [selectedVariant, setSelectVariant] = useState('')
+
+    const addCartOptions = {
+        children: 'Comprar',
+        isetColors: {
+            backgroundColor: '#cc3542',
+            color: '#fff'
+        },
+        activeColors: {
+            backgroundColor: '#db6b75',
+            color: '#fff'
+        }
+    }
+
+    const detailsOptions = {
+        children: 'Detalhes',
+        isetColors: {
+            backgroundColor: '#f4f4f5',
+            color: '#52525b'
+        },
+    }
+
+    const controlButton = () => {
+        if (selectedVariant !== '') {
+            return addCartOptions
+        }
+
+        return detailsOptions
+    }
+
     return (
         <div className="py-16 px-6 sm:py-16 lg:px-6 mx-auto">
             <div className="flex">
@@ -46,18 +76,17 @@ const OneHighlight = ({ oneHighlight }: OneHighlightProps) => {
                 <div className="flex-1 p-16 flex flex-col">
                     <SectionTitle className="mb-8">{title}</SectionTitle>
                     <div dangerouslySetInnerHTML={{ __html: descriptionHtml }} />
-                    <div className="flex flex-row shrink my-8">
+                    <div className="flex flex-row my-8">
                         <VariantsContainer
+                            selectedVariant={selectedVariant}
+                            onClickVariant={setSelectVariant}
                             variants={variants}
                         />
                         <QntdInput className="ml-4" />
                         <OutlineBaseButton
-                            icon={{
-                                component: MagnifyingGlassIcon,
-                                bold: true
-                            }}
                             className="ml-auto"
-                        >Detalhes</OutlineBaseButton>
+                            {...controlButton()}
+                        />
                     </div>
 
                 </div>

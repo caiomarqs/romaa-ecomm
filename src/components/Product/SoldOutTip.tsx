@@ -33,7 +33,7 @@ const SoldOutTip = ({ open, onClose }: SoldOutTipProps) => {
                 className={renderClassNames(TooltipContainer(vibrate))}
             >
                 <span
-                    className={renderClassNames(TooltipSpan)}>Tamanho indisponivel</span>
+                    className={renderClassNames(TooltipSpan)}>Tamanho Esgotado</span>
             </div>
             :
             <></>

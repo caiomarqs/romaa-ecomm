@@ -1,22 +1,24 @@
-import { useState } from "react"
-
 import { VariantButton } from "./VariantButton"
 
 type VariantsContainerProps = {
-    variants: any
+    variants: any,
+    selectedVariant: string,
+    onClickVariant: (title: string) => any
 }
 
-const VariantsContainer = ({ variants }: VariantsContainerProps) => {
-
-    const [selectedVariant, setSelectVariant] = useState('')
+const VariantsContainer = ({
+    variants,
+    selectedVariant,
+    onClickVariant
+}: VariantsContainerProps) => {
 
     const selectVariant = (title: string) => {
 
-        if(title === selectedVariant && selectedVariant !== '') {
-            return setSelectVariant('')
+        if (title === selectedVariant && selectedVariant !== '') {
+            return onClickVariant('')
         }
 
-        return setSelectVariant(title)
+        return onClickVariant(title)
     }
 
     const renderVariant = (variant: any, i: number) => {
@@ -25,8 +27,8 @@ const VariantsContainer = ({ variants }: VariantsContainerProps) => {
 
         return (
             <VariantButton
-                key={variant.title + i} 
-                variant={variant} 
+                key={variant.title + i}
+                variant={variant}
                 isLastVariant={isLastVariant}
                 isActive={variant.title === selectedVariant}
                 onClick={() => selectVariant(variant.title)}

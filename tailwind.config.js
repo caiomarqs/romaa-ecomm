@@ -20,15 +20,15 @@ module.exports = {
       },
       keyframes: {
         vibrate: {
-          '0%, 100%': { transform: 'rotate(0deg)' },
-          '10%': { transform: 'rotate(-5deg)' },
-          '20%': { transform: 'rotate(5deg)' },
-          '30%': { transform: 'rotate(0deg)' },
-          '40%': { transform: 'rotate(-3deg)' },
-          '50%': { transform: 'rotate(3deg)' },
-          '60%': { transform: 'rotate(0deg)' },
-          '70%': { transform: 'rotate(-1deg)' },
-          '80%': { transform: 'rotate(1deg)' },
+          '0%, 100%': { transform: 'scale(100%)' },
+          '10%': { transform: 'scale(110%)' },
+          '20%': { transform: 'scale(90%)' },
+          '30%': { transform: 'scale(100%)' },
+          '40%': { transform: 'scale(105%)' },
+          '50%': { transform: 'scale(95%)' },
+          '60%': { transform: 'scale(100%)' },
+          '70%': { transform: 'scale(103%)' },
+          '80%': { transform: 'scale(97%)' },
         }
       },
       animation: {

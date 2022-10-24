@@ -13,12 +13,12 @@ const OneHighlightContainer: TailWindClassType = [
 const TooltipSpan = [
     'text-xs',
     'font-bold',
-    'text-zinc-400',
+    'text-red-400',
+    'bg-red-50',
     'capitalize',
     'w-[100%]',
     'py-4',
     'px-8',
-    'border',
     'rounded-md'
 ]
 
@@ -75,7 +75,7 @@ const QntdInputStyles = [
     'outline-none',
     'text-center',
     'text-xs',
-    'font-bold'
+    'font-medium'
 ]
 
 export {

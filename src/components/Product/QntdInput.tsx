@@ -1,5 +1,6 @@
 import { PlusSmallIcon, MinusSmallIcon } from '@heroicons/react/20/solid'
-import { useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
+import { useClickOutSideRef } from '../../hooks'
 import { renderClassNames } from '../../theme'
 import { MinusButtonStyle, PlusButtonStyle, QntdInputStyles } from './styles'
 
@@ -11,24 +12,23 @@ type QntdInputProps = {
 const QntdInput = ({ className }: QntdInputProps) => {
     const clickedStyle = {
         backgroundColor: '#cc3542',
-        borderColor: '#cc3542',
         color: '#fff'
     }
 
     const insetStyle = {
         backgroundColor: 'transparent',
-        borderColor: '#a1a1aa',
-        color: '#a1a1aa'
+        color: '#52525b'
     }
 
     const disableStyle = {
         backgroundColor: '#e4e4e7',
-        borderColor: '#d4d4d8',
-        color: '#d4d4d8'
+        color: '#a1a1aa'
     }
 
+    const inputRef = useRef(null)
+
     const [qntdValue, setQntdValue] = useState<number | string>(1)
-    const [disableMinus, setDisableMinus] = useState(false)
+    const [disableMinus, setDisableMinus] = useState(true)
     const [disablePlus, setDisablePlus] = useState(false)
     const [minusButtonStyle, setMinusButtonStyle] = useState(insetStyle)
     const [plusButtonStyle, setPlusButtonStyle] = useState(insetStyle)
@@ -51,8 +51,7 @@ const QntdInput = ({ className }: QntdInputProps) => {
         }
     }
 
-    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-
+    const onInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value
 
         if (value == "") {
@@ -64,6 +63,12 @@ const QntdInput = ({ className }: QntdInputProps) => {
         if (/^\d+$/gm.test(value)) {
             const qntd = Number.parseInt(value)
             changeQntd(qntd)
+        }
+    }
+
+    const onBlur = () => {
+        if (qntdValue == "") {
+            setQntdValue(1)
         }
     }
 
@@ -88,9 +93,11 @@ const QntdInput = ({ className }: QntdInputProps) => {
                 <MinusSmallIcon />
             </button>
             <input
+                ref={inputRef}
                 className={renderClassNames(QntdInputStyles)}
                 type="number"
-                onInput={onChange}
+                onInput={onInput}
+                onBlur={onBlur}
                 value={qntdValue}
                 style={insetStyle}
             />

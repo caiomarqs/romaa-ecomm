@@ -13,12 +13,10 @@ interface OutlineBaseButtonProps
     path?: string,
     isetColors?: {
         backgroundColor: string,
-        borderColor: string,
         color: string
     }
     activeColors?: {
         backgroundColor: string,
-        borderColor: string,
         color: string
     },
     type?: 'select' | 'click' | 'hover',
@@ -42,12 +40,10 @@ const OutlineBaseButton = ({
     path,
     isetColors = {
         backgroundColor: 'transparent',
-        borderColor: '#a1a1aa',
-        color: '#a1a1aa'
+        color: '#52525b'
     },
     activeColors = {
         backgroundColor: '#cc3542',
-        borderColor: '#cc3542',
         color: '#fff'
     },
     type = 'hover',
@@ -58,15 +54,13 @@ const OutlineBaseButton = ({
     ...props
 }: OutlineBaseButtonProps) => {
 
-
     const isetStyle = { ...isetColors }
 
     const activeStyle = { ...activeColors }
 
     const disableStyle = {
         backgroundColor: '#e4e4e7',
-        borderColor: '#d4d4d8',
-        color: '#d4d4d8'
+        color: '#a1a1aa'
     }
 
     const actualClassNames = (): TailWindClassType => {
@@ -84,7 +78,6 @@ const OutlineBaseButton = ({
     const [buttonStyle, setButtonStyle] = useState(isetStyle)
 
     useEffect(() => {
-
         if (buttonDisable?.disable) {
             setButtonStyle(disableStyle)
         }
@@ -97,7 +90,7 @@ const OutlineBaseButton = ({
             setButtonStyle(isetStyle)
         }
 
-    }, [buttonActive, buttonDisable?.disable])
+    }, [buttonActive, buttonDisable?.disable, props.children])
 
 
     const onMouseOver = () => {
