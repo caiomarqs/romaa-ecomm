@@ -19,27 +19,7 @@ const VariantButton = ({
     onClick
 }: VariantButtonProps) => {
 
-    const selectedStyle = {
-        backgroundColor: '#cc3542',
-        borderColor: '#cc3542',
-        color: '#fff'
-    }
-
-    const insetStyle = {
-        backgroundColor: 'transparent',
-        borderColor: '#a1a1aa',
-        color: '#a1a1aa'
-    }
-
-    const disableStyle = {
-        backgroundColor: '#e4e4e7',
-        borderColor: '#d4d4d8',
-        color: '#d4d4d8'
-    }
-
     const disable = !variant.availableForSale
-
-    const [buttonStyles, setButtonStyles] = useState(disable ? disableStyle : insetStyle)
 
     const [warningAction, setWaringAction] = useState(false)
 

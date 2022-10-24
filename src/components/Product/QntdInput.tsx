@@ -3,7 +3,12 @@ import { useState } from 'react'
 import { renderClassNames } from '../../theme'
 import { MinusButtonStyle, PlusButtonStyle, QntdInputStyles } from './styles'
 
-const QntdInput = () => {
+type QntdInputProps = {
+    className?: string
+}
+
+
+const QntdInput = ({ className }: QntdInputProps) => {
     const clickedStyle = {
         backgroundColor: '#cc3542',
         borderColor: '#cc3542',
@@ -29,12 +34,12 @@ const QntdInput = () => {
     const [plusButtonStyle, setPlusButtonStyle] = useState(insetStyle)
 
     const changeQntd = (qntd: number) => {
-        if (qntd === 0 || qntd < 0) {
+        if (qntd === 1 || qntd < 1) {
             setDisableMinus(true)
-            setQntdValue(0)
+            setQntdValue(1)
         }
 
-        if (qntd >= 1 && qntd < 99) {
+        if (qntd >= 2 && qntd < 99) {
             setDisableMinus(false)
             setDisablePlus(false)
             setQntdValue(qntd)
@@ -71,9 +76,9 @@ const QntdInput = () => {
     }
 
     return (
-        <div className='flex'>
+        <div className={`flex${' ' + className ?? ''}`}>
             <button
-                onClick={() => changeQntd((qntdValue == "" ? 0 : qntdValue as number) - 1)}
+                onClick={() => changeQntd((qntdValue == "" ? 1 : qntdValue as number) - 1)}
                 className={renderClassNames(MinusButtonStyle)}
                 disabled={disableMinus}
                 style={disableMinus ? disableStyle : minusButtonStyle}
@@ -90,7 +95,7 @@ const QntdInput = () => {
                 style={insetStyle}
             />
             <button
-                onClick={() => changeQntd((qntdValue == "" ? 0 : qntdValue as number) + 1)}
+                onClick={() => changeQntd((qntdValue == "" ? 1 : qntdValue as number) + 1)}
                 className={renderClassNames(PlusButtonStyle)}
                 disabled={disablePlus}
                 style={disablePlus ? disableStyle : plusButtonStyle}

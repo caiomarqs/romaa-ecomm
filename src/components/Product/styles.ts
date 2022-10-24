@@ -10,22 +10,6 @@ const OneHighlightContainer: TailWindClassType = [
     'duration-300'
 ]
 
-const VariantSpanStyle = [
-    'cursor-pointer',
-    'text-sm',
-    'font-bold',
-    'border',
-    'w-[3rem]',
-    'h-[3rem]',
-    'rounded-lg',
-    'flex',
-    'items-center',
-    'justify-center',
-    'transition-[color, background-color, border]',
-    'ease',
-    'duration-150'
-]
-
 const TooltipSpan = [
     'text-xs',
     'font-bold',
@@ -57,10 +41,10 @@ const TooltipContainer = (open: boolean) => {
 
 const QntdButtonStyle = [
     'cursor-pointer',
-    'text-sm',
+    'text-xs',
     'font-bold',
     'w-[1.5rem]',
-    'h-[3rem]',
+    'h-[2.25rem]',
     'flex',
     'items-center',
     'justify-center',
@@ -86,16 +70,16 @@ const PlusButtonStyle = [
 
 const QntdInputStyles = [
     'border',
-    'w-[3rem]',
+    'w-[2.25rem]',
+    'h-[2.25rem]',
     'outline-none',
     'text-center',
-    'text-sm',
+    'text-xs',
     'font-bold'
 ]
 
 export {
     OneHighlightContainer,
-    VariantSpanStyle,
     TooltipSpan,
     TooltipContainer,
     MinusButtonStyle,

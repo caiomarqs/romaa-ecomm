@@ -1,9 +1,10 @@
-import { DOMAttributes, HTMLAttributes, ReactElement, useEffect, useState } from "react"
+import { createElement, DOMAttributes, HTMLAttributes, ReactElement, useEffect, useState } from "react"
 
 import Link from "next/link"
 
 import { renderClassNames, TailWindClassType } from "../../theme"
-import { OutlineLargeBaseButtonStyles, OutlineSquareBaseButtonStyles } from "./styles"
+import { IconAtButton, OutlineLargeBaseButtonStyles, OutlineSquareBaseButtonStyles } from "./styles"
+import { render } from "react-dom"
 
 interface OutlineBaseButtonProps
     extends
@@ -26,7 +27,15 @@ interface OutlineBaseButtonProps
         disable: boolean,
         disableWarningAction?: () => any
     },
-    buttonActive?: boolean
+    buttonActive?: boolean,
+    icon?: {
+        component: (
+            { }: React.ComponentProps<'svg'> & { title?: string; titleId?: string; }
+        ) => JSX.Element,
+        color?: string,
+        bold?: boolean,
+        rigth?: boolean
+    }
 }
 
 const OutlineBaseButton = ({
@@ -45,6 +54,7 @@ const OutlineBaseButton = ({
     sizeButton = 'large',
     buttonDisable,
     buttonActive,
+    icon,
     ...props
 }: OutlineBaseButtonProps) => {
 
@@ -120,25 +130,52 @@ const OutlineBaseButton = ({
     const isClick = {
     }
 
-    const renderButton = () => (
-        <span
-            {...isHoverOrSelect()}
-            {...isClick}
-            {...props}
-            className={renderClassNames(actualClassNames())}
-            style={buttonStyle}
-            {...isDisable}
-        >
-            {props.children}
-        </span>
-    )
+    const renderButtonContent = () => {
+        let child;
+
+        const renderWithIcon = icon?.component
+
+        if (renderWithIcon) {
+            const Icon = icon?.component
+
+            const renderIcon = () => <Icon
+                className={renderClassNames(IconAtButton(icon?.rigth))}
+                style={icon.bold ? { strokeWidth: 1, stroke: buttonStyle.color } : {}}
+            />
+
+            child = (
+                <>
+                    {!icon.rigth ? renderIcon() : <></>}
+                    {props.children}
+                    {icon.rigth ? renderIcon() : <></>}
+                </>
+            )
+        }
+
+        if (!renderWithIcon) {
+            child = props.children
+        }
+
+        return (
+            <span
+                {...isHoverOrSelect()}
+                {...isClick}
+                {...props}
+                className={renderClassNames(actualClassNames())}
+                style={buttonStyle}
+                {...isDisable}
+            >
+                {child}
+            </span>
+        )
+    }
 
     return (
         path
             ?
-            <Link href={path} >{renderButton()}</Link>
+            <Link href={path} >{renderButtonContent()}</Link>
             :
-            renderButton()
+            renderButtonContent()
     )
 }
 

@@ -2,35 +2,49 @@ import { TailWindClassType } from "../../theme";
 
 const OutlineBaseButtonStyles = [
     'cursor-pointer',
-    'text-sm',
+    'h-[2.25rem]',
+    'min-h-[2.25rem]',
     'border',
     'rounded-md',
     'capitalize',
     'font-bold',
     'transition-[color, background-color, border]',
     'ease',
-    'duration-150'
+    'duration-150',
+    'subpixel-antialiased',
+    'antialiased',
 ]
 
 const OutlineLargeBaseButtonStyles = (className: string): TailWindClassType => ([
-    'py-2',
     'px-4',
     'w-fit',
+    'text-sm',
+    'flex',
+    'items-center',
     ...OutlineBaseButtonStyles,
     className
 ])
 
 const OutlineSquareBaseButtonStyles = (className: string): TailWindClassType => ([
-    'w-[3rem]',
-    'h-[3rem]',
+    'w-[2.25rem]',
     'flex',
     'items-center',
     'justify-center',
+    'text-xs',
     ...OutlineBaseButtonStyles,
     className
 ])
 
+const IconAtButton = (rigth?: boolean) => ([
+    'h-[.875rem]',
+    'transition-[stroke]',
+    'ease',
+    'duration-150',
+    `${rigth ? 'ml-1' : 'mr-1'}`
+])
+
 export {
     OutlineLargeBaseButtonStyles,
-    OutlineSquareBaseButtonStyles
+    OutlineSquareBaseButtonStyles,
+    IconAtButton
 }

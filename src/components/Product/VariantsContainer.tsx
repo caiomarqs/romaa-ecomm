@@ -1,5 +1,4 @@
 import { useState } from "react"
-import { QntdInput } from "./QntdInput"
 
 import { VariantButton } from "./VariantButton"
 
@@ -36,7 +35,7 @@ const VariantsContainer = ({ variants }: VariantsContainerProps) => {
     }
 
     return (
-        <div className="flex my-8">
+        <div className="flex">
             {
                 variants.map(renderVariant)
             }
